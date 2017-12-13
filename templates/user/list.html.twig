@@ -1,0 +1,24 @@
+<h1>LISTE DES UTILISATEURS : </h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>email</th>
+        <th>actif</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.isActive }}</td>
+            <td>{{ user.url }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
