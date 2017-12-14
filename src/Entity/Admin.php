@@ -68,4 +68,9 @@ class Admin
     {
         $this->password = $password;
     }
+
+    public function __toString()
+    {
+        return $this->getLogin();
+    }
 }

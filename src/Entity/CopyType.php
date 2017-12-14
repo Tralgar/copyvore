@@ -46,4 +46,9 @@ class CopyType
     {
         $this->type = $type;
     }
+
+    public function __toString()
+    {
+        return $this->getType();
+    }
 }

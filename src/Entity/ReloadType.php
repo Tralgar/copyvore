@@ -111,4 +111,14 @@ class ReloadType
     {
         $this->copyType = $copyType;
     }
+
+    public function getAmount()
+    {
+        return $this->getNumber() * $this->getUnitPrice() . "€";
+    }
+
+    public function __toString()
+    {
+        return $this->getCopyType() . " (" . $this->getNumber() . "x" . $this->getUnitPrice() . "€)";
+    }
 }

@@ -1,11 +1,102 @@
 easy_admin:
+  formats:
+    date: 'd/m/Y'
+    time: 'H:i'
+    datetime: 'd/m/Y H:i:s'
+
   site_name: 'Copyvore Admin'
+
   design:
     brand_color: '#FD0100'
+
   entities:
-    - App\Entity\User
-    - App\Entity\Order
-    - App\Entity\Reload
-    - App\Entity\ReloadType
-    - App\Entity\CopyType
-    - App\Entity\Admin
+    User:
+      class: App\Entity\User
+      label: 'Utilisateurs'
+      list:
+        title: 'Liste des %%entity_label%%'
+        max_results: 30
+        fields:
+         - { property: 'name', label: 'Nom' }
+         - { property: 'surname', label: 'Prénom' }
+         - { property: 'email', label: 'E-mail', type: 'email' }
+         - { property: 'phone', label: 'Téléphone', type: 'tel' }
+      new:
+        title: 'Ajouter un utilisateur'
+      edit:
+        title: 'Utilisateur (#%%entity_id%%)'
+
+    Order:
+      class: App\Entity\Order
+      label: 'Commandes'
+      list:
+        title: 'Liste des %%entity_label%%'
+        max_results: 30
+        sort: 'createdAt'
+        fields:
+          - { property: 'user', label: 'Utilisateur' }
+          - { property: 'admin', label: 'Admin' }
+          - { property: 'copyType', label: 'Type de copie' }
+          - { property: 'createdAt', label: 'Date de commande' }
+          - { property: 'number', label: 'Nombre de copies' }
+          - { property: 'label', label: 'Libellé' }
+      search:
+        sort: 'createdAt'
+        max_results: 30
+      edit:
+        title: 'Commande (#%%entity_id%%)'
+
+    Reload:
+      class: App\Entity\Reload
+      label: 'Recharges'
+      list:
+        title: 'Liste des %%entity_label%%'
+        max_results: 30
+        sort: 'createdAt'
+        fields:
+         - { property: 'user', label: 'Utilisateur' }
+         - { property: 'admin', label: 'Admin' }
+         - { property: 'reloadType', label: 'Type de recharge' }
+         - { property: 'createdAt', label: 'Date de création' }
+      search:
+        sort: 'createdAt'
+        max_results: 30
+      edit:
+        title: 'Recharge (#%%entity_id%%)'
+
+    ReloadType:
+      class: App\Entity\ReloadType
+      label: 'Types de recharge'
+      list:
+        title: 'Liste des %%entity_label%%'
+        max_results: 30
+        fields:
+         - { property: 'copyType', label: 'Copie' }
+         - { property: 'number', label: 'Nombre' }
+         - { property: 'unitPrice', label: 'Prix unitaire', format: '%.2f' }
+         - { property: 'amount', label: 'Montant', format: '%.2f' }
+         - { property: 'isAvailable', label: 'Actif' }
+      edit:
+        title: 'Type de recharge (#%%entity_id%%)'
+
+    CopyType:
+      class: App\Entity\CopyType
+      label: 'Types de copie'
+      list:
+        title: 'Liste des %%entity_label%%'
+        max_results: 30
+        fields:
+         - { property: 'type', label: 'Type' }
+      edit:
+        title: 'Type de copie (#%%entity_id%%)'
+
+    Admin:
+      class: App\Entity\Admin
+      label: 'Admins'
+      list:
+        title: 'Liste des %%entity_label%%'
+        max_results: 30
+        fields:
+         - { property: 'login', label: 'Login' }
+      edit:
+        title: 'Admin (#%%entity_id%%)'

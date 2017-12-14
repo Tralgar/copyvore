@@ -2,19 +2,11 @@
 #    path: /
 #    defaults: { _controller: 'App\Controller\DefaultController::index' }
 
-user_show:
-  path: /user/show/{id}
-  controller: App\Controller\UserController::show
-  requirements:
-    id: '\d+'
-
-user_new:
-  path: /user/new
-  controller: App\Controller\UserController::new
-
-user_list:
-  path: /user/list
-  controller: App\Controller\UserController::list
+#user_show:
+#  path: /user/show/{id}
+#  controller: App\Controller\UserController::show
+#  requirements:
+#    id: '\d+'
 
 #homepage:
 #  path: /

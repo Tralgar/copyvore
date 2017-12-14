@@ -218,4 +218,9 @@ class User
     {
         $this->postcode = $postcode;
     }
+
+    public function __toString()
+    {
+        return $this->getSurname() . " " . $this->getName();
+    }
 }
