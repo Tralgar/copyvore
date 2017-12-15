@@ -33,10 +33,12 @@ composer install
 
 ### Run It !
 
-edit the copyvore/.env to change ids for database connection.
+Edit the copyvore/.env file to change ids and url for database connection.
 
 ```
 php bin/console server:run
 ```
 
-If you have no error, you can now see the application on your web browser !
+If you have any errors, please check http://symfony.com/doc/current/setup.html#troubleshooting-the-requirements-checker
+If not, you can now see the application on your web browser !
+
