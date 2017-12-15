@@ -1,13 +1,19 @@
 easy_admin:
+  site_name: 'Copyvore Admin'
   formats:
     date: 'd/m/Y'
     time: 'H:i'
     datetime: 'd/m/Y H:i:s'
-
-  site_name: 'Copyvore Admin'
-
   design:
     brand_color: '#FD0100'
+
+  list:
+    actions:
+      - { name: 'delete', icon: 'cross', label: '', title: 'Supprimer' }
+      - { name: 'edit', icon: 'pencil', label: '', title: 'Editer' }
+      - { name: 'list', label: 'Lister' }
+      - { name: 'new', icon: 'add', label: '', title: 'Edit' }
+      - { search: 'show', icon: 'search', label: '', title: 'Rechercher' }
 
   entities:
     User:
@@ -17,10 +23,22 @@ easy_admin:
         title: 'Liste des %%entity_label%%'
         max_results: 30
         fields:
-         - { property: 'name', label: 'Nom' }
-         - { property: 'surname', label: 'Prénom' }
-         - { property: 'email', label: 'E-mail', type: 'email' }
-         - { property: 'phone', label: 'Téléphone', type: 'tel' }
+          - { property: 'name', label: 'Nom' }
+          - { property: 'surname', label: 'Prénom' }
+          - { property: 'email', label: 'E-mail', type: 'email' }
+          - { property: 'phone', label: 'Téléphone', type: 'tel' }
+      form:
+        fields:
+          - { property: 'name', label: 'Nom', icon: 'user' }
+          - { property: 'surname', label: 'Prénom', icon: 'user' }
+          - { property: 'email', label: 'E-mail', type: 'email' }
+          - { property: 'password', label: 'Mot de passe', type: 'password' }
+          - { type: 'section', label: 'Informations additionnelles', icon: 'house', css_class: 'danger' }
+          - { property: 'phone', label: 'Téléphone', type: 'tel' }
+          - { property: 'streetNumber', label: 'Numéro de rue' }
+          - { property: 'street', label: 'Rue' }
+          - { property: 'city', label: 'Ville' }
+          - { property: 'postcode', label: 'Code postal' }
       new:
         title: 'Ajouter un utilisateur'
       edit:
@@ -39,10 +57,20 @@ easy_admin:
           - { property: 'copyType', label: 'Type de copie' }
           - { property: 'createdAt', label: 'Date de commande' }
           - { property: 'number', label: 'Nombre de copies' }
-          - { property: 'label', label: 'Libellé' }
+          - { property: 'label', label: 'Libellé', type: 'ckeditor' }
       search:
         sort: 'createdAt'
         max_results: 30
+      form:
+        fields:
+          - { type: 'group', css_class: 'col-sm-6', label: 'Informations humaines' }
+          - { property: 'user', label: 'Utilisateur', icon: 'user' }
+          - { property: 'admin', label: 'Admin', icon: 'user' }
+          - { type: 'group', css_class: 'col-sm-6', label: 'Informations commande' }
+          - { property: 'copyType', label: 'Type de copie' }
+          - { property: 'number', label: 'Nombre de copies' }
+          - { property: 'label', label: 'Libellé' }
+          - { property: 'createdAt', label: 'Date de création', type_options: { widget: 'single_text' } }
       edit:
         title: 'Commande (#%%entity_id%%)'
 
@@ -54,13 +82,19 @@ easy_admin:
         max_results: 30
         sort: 'createdAt'
         fields:
-         - { property: 'user', label: 'Utilisateur' }
-         - { property: 'admin', label: 'Admin' }
-         - { property: 'reloadType', label: 'Type de recharge' }
-         - { property: 'createdAt', label: 'Date de création' }
+          - { property: 'user', label: 'Utilisateur' }
+          - { property: 'admin', label: 'Admin' }
+          - { property: 'reloadType', label: 'Type de recharge' }
+          - { property: 'createdAt', label: 'Date de création' }
       search:
         sort: 'createdAt'
         max_results: 30
+      form:
+        fields:
+          - { property: 'user', label: 'Utilisateur', icon: 'user' }
+          - { property: 'admin', label: 'Admin', icon: 'user' }
+          - { property: 'reloadType', label: 'Type de recharge' }
+          - { property: 'createdAt', label: 'Date de création', type_options: { widget: 'single_text' } }
       edit:
         title: 'Recharge (#%%entity_id%%)'
 
@@ -71,11 +105,17 @@ easy_admin:
         title: 'Liste des %%entity_label%%'
         max_results: 30
         fields:
-         - { property: 'copyType', label: 'Copie' }
-         - { property: 'number', label: 'Nombre' }
-         - { property: 'unitPrice', label: 'Prix unitaire', format: '%.2f' }
-         - { property: 'amount', label: 'Montant', format: '%.2f' }
-         - { property: 'isAvailable', label: 'Actif' }
+          - { property: 'number', label: 'Nombre' }
+          - { property: 'unitPrice', label: 'Prix unitaire', type: 'money', type_options: { currency: 'EUR' } }
+          - { property: 'amount', label: 'Montant', type: 'money', type_options: { currency: 'EUR' } }
+          - { property: 'copyType', label: 'Copie' }
+          - { property: 'isAvailable', label: 'Active' }
+      form:
+        fields:
+          - { property: 'number', label: 'Nombre de copies' }
+          - { property: 'unitPrice', label: 'Prix unitaire', type: 'money', type_options: { currency: 'EUR' } }
+          - { property: 'copyType', label: 'Type de copie' }
+          - { property: 'isAvailable', label: 'Active' }
       edit:
         title: 'Type de recharge (#%%entity_id%%)'
 
@@ -86,7 +126,7 @@ easy_admin:
         title: 'Liste des %%entity_label%%'
         max_results: 30
         fields:
-         - { property: 'type', label: 'Type' }
+          - { property: 'type', label: 'Type' }
       edit:
         title: 'Type de copie (#%%entity_id%%)'
 
@@ -97,6 +137,10 @@ easy_admin:
         title: 'Liste des %%entity_label%%'
         max_results: 30
         fields:
-         - { property: 'login', label: 'Login' }
+          - { property: 'login', label: 'Login' }
+      form:
+        fields:
+          - { property: 'login', label: 'Login', icon: 'user' }
+          - { property: 'password', label: 'Mot de passe', type: 'password' }
       edit:
         title: 'Admin (#%%entity_id%%)'

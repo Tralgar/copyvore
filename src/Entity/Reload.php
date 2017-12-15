@@ -10,106 +10,111 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Reload
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+  /**
+   * @ORM\Id
+   * @ORM\GeneratedValue
+   * @ORM\Column(type="integer")
+   */
+  private $id;
 
-    /**
-     * @ORM\Column(name="created_at", type="datetime")
-     * @Assert\DateTime()
-     */
-    private $createdAt;
+  /**
+   * @ORM\Column(name="created_at", type="datetime")
+   * @Assert\DateTime()
+   */
+  private $createdAt;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
+  /**
+   * @ORM\ManyToOne(targetEntity="App\Entity\User")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $user;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Admin")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $admin;
+  /**
+   * @ORM\ManyToOne(targetEntity="App\Entity\Admin")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $admin;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\ReloadType")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $reloadType;
+  /**
+   * @ORM\ManyToOne(targetEntity="App\Entity\ReloadType")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $reloadType;
 
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+  /**
+   * @return mixed
+   */
+  public function getId()
+  {
+    return $this->id;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
+  /**
+   * @return \DateTime
+   */
+  public function getCreatedAt() : \DateTime
+  {
+    return $this->createdAt;
+  }
 
-    /**
-     * @param mixed $createdAt
-     */
-    public function setCreatedAt($createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
+  /**
+   * @param \DateTime $createdAt
+   */
+  public function setCreatedAt(\DateTime $createdAt): void
+  {
+    $this->createdAt = $createdAt;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
+  /**
+   * @return User
+   */
+  public function getUser(): User
+  {
+    return $this->user;
+  }
 
-    /**
-     * @param mixed $user
-     */
-    public function setUser($user): void
-    {
-        $this->user = $user;
-    }
+  /**
+   * @param User $user
+   */
+  public function setUser(User $user): void
+  {
+    $this->user = $user;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getAdmin()
-    {
-        return $this->admin;
-    }
+  /**
+   * @return Admin
+   */
+  public function getAdmin(): Admin
+  {
+    return $this->admin;
+  }
 
-    /**
-     * @param mixed $admin
-     */
-    public function setAdmin($admin): void
-    {
-        $this->admin = $admin;
-    }
+  /**
+   * @param Admin $admin
+   */
+  public function setAdmin(Admin $admin): void
+  {
+    $this->admin = $admin;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getReloadType()
-    {
-        return $this->reloadType;
-    }
+  /**
+   * @return ReloadType
+   */
+  public function getReloadType(): ReloadType
+  {
+    return $this->reloadType;
+  }
 
-    /**
-     * @param mixed $reloadType
-     */
-    public function setReloadType($reloadType): void
-    {
-        $this->reloadType = $reloadType;
-    }
+  /**
+   * @param ReloadType $reloadType
+   */
+  public function setReloadType(ReloadType $reloadType): void
+  {
+    $this->reloadType = $reloadType;
+  }
+
+  public function __toString(): string
+  {
+    return $this->getUser() . " " . $this->getReloadType() . " Par " . $this->getAdmin();
+  }
 }

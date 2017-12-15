@@ -10,149 +10,154 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Order
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+  /**
+   * @ORM\Id
+   * @ORM\GeneratedValue
+   * @ORM\Column(type="integer")
+   */
+  private $id;
 
-    /**
-     * @ORM\Column(name="created_at", type="datetime")
-     * @Assert\DateTime()
-     */
-    private $createdAt;
+  /**
+   * @ORM\Column(name="created_at", type="datetime")
+   * @Assert\DateTime()
+   */
+  private $createdAt;
 
-    /**
-     * @ORM\Column(type="integer", length=10)
-     * @Assert\NotBlank()
-     */
-    private $number;
+  /**
+   * @ORM\Column(type="integer", length=10)
+   * @Assert\NotBlank()
+   */
+  private $number;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $label;
+  /**
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  private $label;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
+  /**
+   * @ORM\ManyToOne(targetEntity="App\Entity\User")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $user;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Admin")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $admin;
+  /**
+   * @ORM\ManyToOne(targetEntity="App\Entity\Admin")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $admin;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\CopyType")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $copyType;
+  /**
+   * @ORM\ManyToOne(targetEntity="App\Entity\CopyType")
+   * @ORM\JoinColumn(nullable=false)
+   */
+  private $copyType;
 
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+  /**
+   * @return mixed
+   */
+  public function getId()
+  {
+    return $this->id;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
+  /**
+   * @return \DateTime
+   */
+  public function getCreatedAt() : \DateTime
+  {
+    return $this->createdAt;
+  }
 
-    /**
-     * @param mixed $createdAt
-     */
-    public function setCreatedAt($createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
+  /**
+   * @param \DateTime $createdAt
+   */
+  public function setCreatedAt(\DateTime $createdAt): void
+  {
+    $this->createdAt = $createdAt;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getNumber()
-    {
-        return $this->number;
-    }
+  /**
+   * @return int
+   */
+  public function getNumber(): int
+  {
+    return $this->number;
+  }
 
-    /**
-     * @param mixed $number
-     */
-    public function setNumber($number): void
-    {
-        $this->number = $number;
-    }
+  /**
+   * @param int $number
+   */
+  public function setNumber(int $number): void
+  {
+    $this->number = $number;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getLabel()
-    {
-        return $this->label;
-    }
+  /**
+   * @return string
+   */
+  public function getLabel(): string
+  {
+    return $this->label;
+  }
 
-    /**
-     * @param mixed $label
-     */
-    public function setLabel($label): void
-    {
-        $this->label = $label;
-    }
+  /**
+   * @param string $label
+   */
+  public function setLabel(string $label): void
+  {
+    $this->label = $label;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
+  /**
+   * @return User
+   */
+  public function getUser(): User
+  {
+    return $this->user;
+  }
 
-    /**
-     * @param mixed $user
-     */
-    public function setUser($user): void
-    {
-        $this->user = $user;
-    }
+  /**
+   * @param User $user
+   */
+  public function setUser(User $user): void
+  {
+    $this->user = $user;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getAdmin()
-    {
-        return $this->admin;
-    }
+  /**
+   * @return Admin
+   */
+  public function getAdmin(): Admin
+  {
+    return $this->admin;
+  }
 
-    /**
-     * @param mixed $admin
-     */
-    public function setAdmin($admin): void
-    {
-        $this->admin = $admin;
-    }
+  /**
+   * @param Admin $admin
+   */
+  public function setAdmin(Admin $admin): void
+  {
+    $this->admin = $admin;
+  }
 
-    /**
-     * @return mixed
-     */
-    public function getCopyType()
-    {
-        return $this->copyType;
-    }
+  /**
+   * @return CopyType
+   */
+  public function getCopyType(): CopyType
+  {
+    return $this->copyType;
+  }
 
-    /**
-     * @param mixed $copyType
-     */
-    public function setCopyType($copyType): void
-    {
-        $this->copyType = $copyType;
-    }
+  /**
+   * @param CopyType $copyType
+   */
+  public function setCopyType(CopyType $copyType): void
+  {
+    $this->copyType = $copyType;
+  }
+
+  public function __toString(): string
+  {
+    return $this->getUser() . " " . $this->getNumber() . "x" . $this->getCopyType() . " Par " . $this->getAdmin();
+  }
 }
