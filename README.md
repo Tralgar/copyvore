@@ -4,14 +4,12 @@ Application web en Symfony 4 (flex).
 - Implémentation d'un back pour gérer les données nécessaires.
 - Mise en place d'un front accessible aux clients afin d'accéder à leur données.
 
-
-
+<br/>
 ### Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-
-
+<br/>
 ### Prerequisites
 
 You need a complete web environment to run the application, please install :
@@ -24,8 +22,7 @@ git
 composer
 ```
 
-
-
+<br/>
 ### Installing
 
 You need to create a database named 'copyvore', with phpmyadmin for example or db-common when you download & install mysql-server.
@@ -37,8 +34,7 @@ cd copyvore
 composer install
 ```
 
-
-
+<br/>
 ### Run It !
 
 edit the copyvore/.env to change ids for database connection.
