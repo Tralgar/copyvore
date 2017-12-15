@@ -22,14 +22,18 @@ composer
 
 ### Installing
 
-Then, go to your web development directory
+You need to create a database named 'copyvore', with phpmyadmin for example or db-common when you download & install mysql-server.
+
+Then, go to your web development directory :
 ```
 git clone https://github.com/Tralgar/copyvore.git
 cd copyvore
 composer install
 ```
 
-### Run It !
+### Run It !
+
+edit the copyvore/.env to change ids for database connection.
 
 ```
 php bin/console server:run
