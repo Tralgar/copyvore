@@ -23,6 +23,8 @@ easy_admin:
       list:
         title: 'Liste des %%entity_label%%'
         max_results: 30
+        actions:
+          - { name: 'show', icon: 'user', label: 'Voir', title: 'Voir' }
         fields:
           - { property: 'name', label: 'Nom' }
           - { property: 'surname', label: 'Prénom' }
@@ -44,6 +46,8 @@ easy_admin:
       new:
         title: 'Ajouter un utilisateur'
       edit:
+        title: 'Utilisateur (#%%entity_id%%)'
+      show:
         title: 'Utilisateur (#%%entity_id%%)'
 
     Order:
