@@ -9,11 +9,10 @@ easy_admin:
 
   list:
     actions:
-      - { name: 'delete', icon: 'cross', label: '', title: 'Supprimer' }
-      - { name: 'edit', icon: 'pencil', label: '', title: 'Editer' }
-      - { name: 'list', label: 'Lister' }
-      - { name: 'new', icon: 'add', label: '', title: 'Edit' }
-      - { search: 'show', icon: 'search', label: '', title: 'Rechercher' }
+      - { name: 'search', icon: 'search', label: 'Rechercher', title: 'Rechercher' }
+      - { name: 'new', icon: 'plus', label: 'Ajouter', title: 'Créer' }
+      - { name: 'edit', icon: 'pencil', label: 'Editer', title: 'Editer' }
+      - { name: 'delete', icon: 'times', label: 'Supprimer', title: 'Supprimer' }
 
   entities:
     User:
@@ -26,15 +25,16 @@ easy_admin:
           - { property: 'name', label: 'Nom' }
           - { property: 'surname', label: 'Prénom' }
           - { property: 'email', label: 'E-mail', type: 'email' }
-          - { property: 'phone', label: 'Téléphone', type: 'tel' }
+          - { property: 'phone', label: 'Téléphone' }
       form:
         fields:
+          - { type: 'section', label: 'Informations Utilisateur', icon: 'user', css_class: 'danger' }
           - { property: 'name', label: 'Nom', icon: 'user' }
           - { property: 'surname', label: 'Prénom', icon: 'user' }
           - { property: 'email', label: 'E-mail', type: 'email' }
           - { property: 'password', label: 'Mot de passe', type: 'password' }
-          - { type: 'section', label: 'Informations additionnelles', icon: 'house', css_class: 'danger' }
-          - { property: 'phone', label: 'Téléphone', type: 'tel' }
+          - { type: 'section', label: 'Informations additionnelles', icon: 'home', css_class: 'danger' }
+          - { property: 'phone', label: 'Téléphone' }
           - { property: 'streetNumber', label: 'Numéro de rue' }
           - { property: 'street', label: 'Rue' }
           - { property: 'city', label: 'Ville' }
@@ -57,7 +57,7 @@ easy_admin:
           - { property: 'copyType', label: 'Type de copie' }
           - { property: 'createdAt', label: 'Date de commande' }
           - { property: 'number', label: 'Nombre de copies' }
-          - { property: 'label', label: 'Libellé', type: 'ckeditor' }
+          - { property: 'label', label: 'Libellé' }
       search:
         sort: 'createdAt'
         max_results: 30

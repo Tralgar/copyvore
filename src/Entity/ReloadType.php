@@ -86,17 +86,17 @@ class ReloadType
   }
 
   /**
-   * @return boolean
+   * @return bool
    */
-  public function getIsAvailable(): boolean
+  public function getIsAvailable(): bool
   {
     return $this->isAvailable;
   }
 
   /**
-   * @param boolean $isAvailable
+   * @param bool $isAvailable
    */
-  public function setIsAvailable(boolean $isAvailable = true): void
+  public function setIsAvailable(bool $isAvailable = true): void
   {
     $this->isAvailable = $isAvailable;
   }
