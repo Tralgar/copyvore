@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AdminRepository")
+ * @ORM\Table(name="copyvore_admin")
  * @UniqueEntity("login")
  */
 class Admin
@@ -42,7 +43,7 @@ class Admin
   /**
    * @return string
    */
-  public function getLogin(): string
+  public function getLogin()
   {
     return $this->login;
   }
@@ -50,7 +51,7 @@ class Admin
   /**
    * @param string $login
    */
-  public function setLogin(string $login): void
+  public function setLogin(string $login)
   {
     $this->login = $login;
   }
@@ -58,7 +59,7 @@ class Admin
   /**
    * @return string
    */
-  public function getPassword(): string
+  public function getPassword()
   {
     return $this->password;
   }
@@ -66,12 +67,12 @@ class Admin
   /**
    * @param string $password
    */
-  public function setPassword(string $password): void
+  public function setPassword(string $password)
   {
     $this->password = $password;
   }
 
-  public function __toString(): string
+  public function __toString()
   {
     return $this->getLogin();
   }

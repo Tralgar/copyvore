@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ReloadTypeRepository")
+ * @ORM\Table(name="copyvore_reload_type")
  * @UniqueEntity(
  *     fields={"copyType", "number", "unitPrice"},
  *     message="Cette combinaison de recharge (Type de copie, nombre et prix unitaire) existe déjà !"
@@ -56,7 +57,7 @@ class ReloadType
   /**
    * @return int
    */
-  public function getNumber(): int
+  public function getNumber()
   {
     return $this->number;
   }
@@ -64,7 +65,7 @@ class ReloadType
   /**
    * @param int $number
    */
-  public function setNumber(int $number): void
+  public function setNumber(int $number)
   {
     $this->number = $number;
   }
@@ -72,7 +73,7 @@ class ReloadType
   /**
    * @return float
    */
-  public function getUnitPrice(): float
+  public function getUnitPrice()
   {
     return $this->unitPrice;
   }
@@ -80,7 +81,7 @@ class ReloadType
   /**
    * @param float $unitPrice
    */
-  public function setUnitPrice(float $unitPrice): void
+  public function setUnitPrice(float $unitPrice)
   {
     $this->unitPrice = $unitPrice;
   }
@@ -88,7 +89,7 @@ class ReloadType
   /**
    * @return bool
    */
-  public function getIsAvailable(): bool
+  public function getIsAvailable()
   {
     return $this->isAvailable;
   }
@@ -96,7 +97,7 @@ class ReloadType
   /**
    * @param bool $isAvailable
    */
-  public function setIsAvailable(bool $isAvailable = true): void
+  public function setIsAvailable(bool $isAvailable = true)
   {
     $this->isAvailable = $isAvailable;
   }
@@ -104,7 +105,7 @@ class ReloadType
   /**
    * @return CopyType
    */
-  public function getCopyType(): CopyType
+  public function getCopyType()
   {
     return $this->copyType;
   }
@@ -112,7 +113,7 @@ class ReloadType
   /**
    * @param CopyType $copyType
    */
-  public function setCopyType(CopyType $copyType): void
+  public function setCopyType(CopyType $copyType)
   {
     $this->copyType = $copyType;
   }
@@ -120,12 +121,12 @@ class ReloadType
   /**
    * @return float
    */
-  public function getAmount(): float
+  public function getAmount()
   {
     return $this->getNumber() * $this->getUnitPrice();
   }
 
-  public function __toString(): string
+  public function __toString()
   {
     return $this->getCopyType() . " (" . $this->getNumber() . "x" . $this->getUnitPrice() . "€)";
   }

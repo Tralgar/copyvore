@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Table(name="copyvore_user")
  * @UniqueEntity("email")
  */
 class User
@@ -69,7 +70,7 @@ class User
    */
   private $postcode;
 
-  /**
+    /**
    * @return mixed
    */
   public function getId()
@@ -80,7 +81,7 @@ class User
   /**
    * @return string
    */
-  public function getName(): string
+  public function getName()
   {
     return $this->name;
   }
@@ -88,7 +89,7 @@ class User
   /**
    * @param string $name
    */
-  public function setName(string $name): void
+  public function setName(string $name)
   {
     $this->name = $name;
   }
@@ -96,7 +97,7 @@ class User
   /**
    * @return string
    */
-  public function getSurname(): string
+  public function getSurname()
   {
     return $this->surname;
   }
@@ -104,7 +105,7 @@ class User
   /**
    * @param string $surname
    */
-  public function setSurname(string $surname): void
+  public function setSurname(string $surname)
   {
     $this->surname = $surname;
   }
@@ -112,7 +113,7 @@ class User
   /**
    * @return string
    */
-  public function getEmail(): string
+  public function getEmail()
   {
     return $this->email;
   }
@@ -120,7 +121,7 @@ class User
   /**
    * @param string $email
    */
-  public function setEmail(string $email): void
+  public function setEmail(string $email)
   {
     $this->email = $email;
   }
@@ -128,7 +129,7 @@ class User
   /**
    * @return string
    */
-  public function getPassword(): string
+  public function getPassword()
   {
     return $this->password;
   }
@@ -136,7 +137,7 @@ class User
   /**
    * @param string $password
    */
-  public function setPassword(string $password): void
+  public function setPassword(string $password)
   {
     $this->password = $password;
   }
@@ -144,7 +145,7 @@ class User
   /**
    * @return string
    */
-  public function getPhone(): string
+  public function getPhone()
   {
     return $this->phone;
   }
@@ -152,7 +153,7 @@ class User
   /**
    * @param string $phone
    */
-  public function setPhone(string $phone): void
+  public function setPhone(string $phone)
   {
     $this->phone = $phone;
   }
@@ -160,7 +161,7 @@ class User
   /**
    * @return int
    */
-  public function getStreetNumber(): int
+  public function getStreetNumber()
   {
     return $this->streetNumber;
   }
@@ -168,7 +169,7 @@ class User
   /**
    * @param int $streetNumber
    */
-  public function setStreetNumber(int $streetNumber): void
+  public function setStreetNumber(int $streetNumber)
   {
     $this->streetNumber = $streetNumber;
   }
@@ -176,7 +177,7 @@ class User
   /**
    * @return string
    */
-  public function getStreet(): string
+  public function getStreet()
   {
     return $this->street;
   }
@@ -184,7 +185,7 @@ class User
   /**
    * @param string $street
    */
-  public function setStreet(string $street): void
+  public function setStreet(string $street)
   {
     $this->street = $street;
   }
@@ -192,7 +193,7 @@ class User
   /**
    * @return string
    */
-  public function getCity(): string
+  public function getCity()
   {
     return $this->city;
   }
@@ -200,7 +201,7 @@ class User
   /**
    * @param string $city
    */
-  public function setCity(string $city): void
+  public function setCity(string $city)
   {
     $this->city = $city;
   }
@@ -208,7 +209,7 @@ class User
   /**
    * @return string
    */
-  public function getPostcode(): string
+  public function getPostcode()
   {
     return $this->postcode;
   }
@@ -216,12 +217,12 @@ class User
   /**
    * @param string $postcode
    */
-  public function setPostcode(string $postcode): void
+  public function setPostcode(string $postcode)
   {
     $this->postcode = $postcode;
   }
 
-  public function getCopyNumberByCopyType(CopyType $copyType): int
+  public function getCopyNumberByCopyType(CopyType $copyType)
   {
     $numberCopiesFromReloads = 0;
     $numberCopiesFromOrders = 0;
@@ -250,7 +251,7 @@ class User
     return $numberCopiesFromReloads - $numberCopiesFromOrders;
   }
 
-  public function __toString(): string
+  public function __toString()
   {
     return $this->getSurname() . " " . $this->getName();
   }

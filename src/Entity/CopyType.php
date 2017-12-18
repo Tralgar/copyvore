@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CopyTypeRepository")
+ * @ORM\Table(name="copyvore_copy_type")
  * @UniqueEntity("type")
  */
 class CopyType
@@ -36,7 +37,7 @@ class CopyType
   /**
    * @return string
    */
-  public function getType(): string
+  public function getType()
   {
     return $this->type;
   }
@@ -44,12 +45,12 @@ class CopyType
   /**
    * @param string $type
    */
-  public function setType(string $type): void
+  public function setType(string $type)
   {
     $this->type = $type;
   }
 
-  public function __toString(): string
+  public function __toString()
   {
     return $this->getType();
   }

@@ -6,6 +6,8 @@ easy_admin:
     datetime: 'd/m/Y H:i:s'
   design:
     brand_color: '#FD0100'
+    assets:
+      favicon: 'images/favicon.ico'
 
   list:
     actions:
@@ -70,7 +72,9 @@ easy_admin:
           - { property: 'copyType', label: 'Type de copie' }
           - { property: 'number', label: 'Nombre de copies' }
           - { property: 'label', label: 'Libellé' }
-          - { property: 'createdAt', label: 'Date de création', type_options: { widget: 'single_text' } }
+#          - { property: 'createdAt', label: 'Date de création' }
+      new:
+        title: 'Créer une commande'
       edit:
         title: 'Commande (#%%entity_id%%)'
 
@@ -94,7 +98,9 @@ easy_admin:
           - { property: 'user', label: 'Utilisateur', icon: 'user' }
           - { property: 'admin', label: 'Admin', icon: 'user' }
           - { property: 'reloadType', label: 'Type de recharge' }
-          - { property: 'createdAt', label: 'Date de création', type_options: { widget: 'single_text' } }
+#          - { property: 'createdAt', label: 'Date de création' }
+      new:
+        title: 'Créer une recharge'
       edit:
         title: 'Recharge (#%%entity_id%%)'
 
@@ -116,6 +122,8 @@ easy_admin:
           - { property: 'unitPrice', label: 'Prix unitaire', type: 'money', type_options: { currency: 'EUR' } }
           - { property: 'copyType', label: 'Type de copie' }
           - { property: 'isAvailable', label: 'Active' }
+      new:
+        title: 'Créer un type de recharge'
       edit:
         title: 'Type de recharge (#%%entity_id%%)'
 
@@ -127,6 +135,8 @@ easy_admin:
         max_results: 30
         fields:
           - { property: 'type', label: 'Type' }
+      new:
+        title: 'Créer un type de copie'
       edit:
         title: 'Type de copie (#%%entity_id%%)'
 
@@ -142,5 +152,7 @@ easy_admin:
         fields:
           - { property: 'login', label: 'Login', icon: 'user' }
           - { property: 'password', label: 'Mot de passe', type: 'password' }
+      new:
+        title: 'Ajouter un admin'
       edit:
         title: 'Admin (#%%entity_id%%)'

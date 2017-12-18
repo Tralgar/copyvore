@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ReloadRepository")
+ * @ORM\Table(name="copyvore_reload")
  */
 class Reload
 {
@@ -52,7 +53,7 @@ class Reload
   /**
    * @return \DateTime
    */
-  public function getCreatedAt() : \DateTime
+  public function getCreatedAt()
   {
     return $this->createdAt;
   }
@@ -60,7 +61,7 @@ class Reload
   /**
    * @param \DateTime $createdAt
    */
-  public function setCreatedAt(\DateTime $createdAt): void
+  public function setCreatedAt(\DateTime $createdAt)
   {
     $this->createdAt = $createdAt;
   }
@@ -68,7 +69,7 @@ class Reload
   /**
    * @return User
    */
-  public function getUser(): User
+  public function getUser()
   {
     return $this->user;
   }
@@ -76,7 +77,7 @@ class Reload
   /**
    * @param User $user
    */
-  public function setUser(User $user): void
+  public function setUser(User $user)
   {
     $this->user = $user;
   }
@@ -84,7 +85,7 @@ class Reload
   /**
    * @return Admin
    */
-  public function getAdmin(): Admin
+  public function getAdmin()
   {
     return $this->admin;
   }
@@ -92,7 +93,7 @@ class Reload
   /**
    * @param Admin $admin
    */
-  public function setAdmin(Admin $admin): void
+  public function setAdmin(Admin $admin)
   {
     $this->admin = $admin;
   }
@@ -100,7 +101,7 @@ class Reload
   /**
    * @return ReloadType
    */
-  public function getReloadType(): ReloadType
+  public function getReloadType()
   {
     return $this->reloadType;
   }
@@ -108,12 +109,12 @@ class Reload
   /**
    * @param ReloadType $reloadType
    */
-  public function setReloadType(ReloadType $reloadType): void
+  public function setReloadType(ReloadType $reloadType)
   {
     $this->reloadType = $reloadType;
   }
 
-  public function __toString(): string
+  public function __toString()
   {
     return $this->getUser() . " " . $this->getReloadType() . " Par " . $this->getAdmin();
   }

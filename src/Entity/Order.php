@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OrderRepository")
+ * @ORM\Table(name="copyvore_order")
  */
 class Order
 {
@@ -52,6 +53,12 @@ class Order
      */
     private $copyType;
 
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+    }
+
     /**
      * @return mixed
      */
@@ -63,7 +70,7 @@ class Order
     /**
      * @return int
      */
-    public function getNumber(): int
+    public function getNumber()
     {
         return $this->number;
     }
@@ -71,7 +78,7 @@ class Order
     /**
      * @param int $number
      */
-    public function setNumber(int $number): void
+    public function setNumber(int $number)
     {
         $this->number = $number;
     }
@@ -79,7 +86,7 @@ class Order
     /**
      * @return string
      */
-    public function getLabel(): string
+    public function getLabel()
     {
         return $this->label;
     }
@@ -87,7 +94,7 @@ class Order
     /**
      * @param string $label
      */
-    public function setLabel(string $label): void
+    public function setLabel(string $label)
     {
         $this->label = $label;
     }
@@ -95,7 +102,7 @@ class Order
     /**
      * @return \DateTime
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt()
     {
         return $this->createdAt;
     }
@@ -103,7 +110,7 @@ class Order
     /**
      * @param \DateTime $createdAt
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
     }
@@ -111,7 +118,7 @@ class Order
     /**
      * @return User
      */
-    public function getUser(): User
+    public function getUser()
     {
         return $this->user;
     }
@@ -119,7 +126,7 @@ class Order
     /**
      * @param User $user
      */
-    public function setUser(User $user): void
+    public function setUser(User $user)
     {
         $this->user = $user;
     }
@@ -127,7 +134,7 @@ class Order
     /**
      * @return Admin
      */
-    public function getAdmin(): Admin
+    public function getAdmin()
     {
         return $this->admin;
     }
@@ -135,7 +142,7 @@ class Order
     /**
      * @param Admin $admin
      */
-    public function setAdmin(Admin $admin): void
+    public function setAdmin(Admin $admin)
     {
         $this->admin = $admin;
     }
@@ -143,7 +150,7 @@ class Order
     /**
      * @return CopyType
      */
-    public function getCopyType(): CopyType
+    public function getCopyType()
     {
         return $this->copyType;
     }
@@ -151,12 +158,12 @@ class Order
     /**
      * @param CopyType $copyType
      */
-    public function setCopyType(CopyType $copyType): void
+    public function setCopyType(CopyType $copyType)
     {
         $this->copyType = $copyType;
     }
 
-    public function __toString(): string
+    public function __toString()
     {
         return $this->getUser() . " " . $this->getNumber() . "x" . $this->getCopyType() . " Par " . $this->getAdmin();
     }
