@@ -12,17 +12,34 @@ These instructions will get you a copy of the project up and running on your loc
 
 You need a complete web environment to run the application, please install :
 
+First of all : php 7.1.x. You need to add a repo :
 ```
-php7.1
-apache2
-mysql-server
-git
-composer
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:ondrej/php
+sudo apt-get update
+```
+Then, install php 7.1 and modules :
+
+```
+sudo apt-get install php7.1 php7.1-cli php7.1-common php7.1-json php7.1-opcache php7.1-mysql php7.1-mbstring php7.1-mcrypt php7.1-zip php7.1-fpm
+```
+If there's some errors, please check https://www.rosehosting.com/blog/install-php-7-1-with-nginx-on-an-ubuntu-16-04-vps/
+
+If everything is OKAY install :
+```
+sudo apt-get install apache2
+sudo apt-get install mysql-server
+sudo apt-get install git
+sudo apt-get install composer
 ```
 
 ### Installing
 
-You need to create a database named 'copyvore', with phpmyadmin for example or db-common when you download & install mysql-server.
+You need to create a database named 'copyvore'. I recommend using phpmyadmin :
+```
+sudo apt-get install phpmyadmin
+```
+Create a database with dbconfig-common when you download & install phpmyadmin.
 
 Then, go to your web development directory :
 ```
