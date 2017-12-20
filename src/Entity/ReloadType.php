@@ -46,6 +46,11 @@ class ReloadType
    */
   private $copyType;
 
+  public function __construct()
+  {
+    $this->setIsAvailable(true);
+  }
+
   /**
    * @return mixed
    */

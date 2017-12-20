@@ -82,6 +82,38 @@ class Admin
     $this->password = $password;
   }
 
+  /**
+   * @return mixed
+   */
+  public function getOrders()
+  {
+    return $this->orders;
+  }
+
+  /**
+   * @param mixed $orders
+   */
+  public function setOrders($orders)
+  {
+    $this->orders = $orders;
+  }
+
+  /**
+   * @return mixed
+   */
+  public function getReloads()
+  {
+    return $this->reloads;
+  }
+
+  /**
+   * @param mixed $reloads
+   */
+  public function setReloads($reloads)
+  {
+    $this->reloads = $reloads;
+  }
+
   public function __toString()
   {
     return $this->getLogin();

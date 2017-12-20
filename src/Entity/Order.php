@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
@@ -184,15 +183,6 @@ class Order
               ->atPath('copyType')
               ->addViolation();
     }
-  }
-
-  /**
-   * @ORM\PostLoad
-   * @ORM\PostPersist
-   */
-  public function fetchEntityManager(LifecycleEventArgs $args)
-  {
-    $this->setEntityManager($args->getEntityManager());
   }
 
 }
