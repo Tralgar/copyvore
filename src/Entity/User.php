@@ -70,7 +70,17 @@ class User
    */
   private $postcode;
 
-    /**
+  /**
+   * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="user")
+   */
+  private $orders;
+
+  /**
+   * @ORM\OneToMany(targetEntity="App\Entity\Reload", mappedBy="user")
+   */
+  private $reloads;
+
+  /**
    * @return mixed
    */
   public function getId()
@@ -222,30 +232,62 @@ class User
     $this->postcode = $postcode;
   }
 
+  /**
+   * @return mixed
+   */
+  public function getOrders()
+  {
+    return $this->orders;
+  }
+
+  /**
+   * @param mixed $orders
+   */
+  public function setOrders($orders)
+  {
+    $this->orders = $orders;
+  }
+
+  /**
+   * @return mixed
+   */
+  public function getReloads()
+  {
+    return $this->reloads;
+  }
+
+  /**
+   * @param mixed $reloads
+   */
+  public function setReloads($reloads)
+  {
+    $this->reloads = $reloads;
+  }
+
+  /**
+   * @param $copyType CopyType
+   *
+   * @return int
+   */
   public function getCopyNumberByCopyType(CopyType $copyType)
   {
+    $reloads = $this->getReloads();
+    $orders = $this->getOrders();
+
     $numberCopiesFromReloads = 0;
     $numberCopiesFromOrders = 0;
-    $reloadTypes = $this->getDoctrine()
-                        ->getRepository(CopyType::class)
-                        ->findBy(['copyType' => $copyType]);
-
-    $reloads = $this->getDoctrine()
-                    ->getRepository(Reload::class)
-                    ->findBy(['user' => $this, 'reloadTypes' => $reloadTypes]);
-
-    $orders = $this->getDoctrine()
-                   ->getRepository(Order::class)
-                   ->findBy(['user' => $this, 'copyType' => $copyType]);
 
     foreach ($reloads as $reload)
     {
-      $numberCopiesFromReloads += $reload->getReloadType()->getNumber();
+      $reloadType = $reload->getReloadType();
+      if ($reloadType->getCopyType() == $copyType)
+        $numberCopiesFromReloads += $reloadType->getNumber();
     }
 
     foreach ($orders as $order)
     {
-      $numberCopiesFromOrders += $order->getNumber();
+      if ($order->getCopyType() == $copyType)
+        $numberCopiesFromOrders += $order->getNumber();
     }
 
     return $numberCopiesFromReloads - $numberCopiesFromOrders;

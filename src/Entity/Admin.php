@@ -33,6 +33,16 @@ class Admin
   private $password;
 
   /**
+   * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="admin")
+   */
+  private $orders;
+
+  /**
+   * @ORM\OneToMany(targetEntity="App\Entity\Reload", mappedBy="admin")
+   */
+  private $reloads;
+
+  /**
    * @return mixed
    */
   public function getId()

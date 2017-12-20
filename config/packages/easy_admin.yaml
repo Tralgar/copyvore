@@ -8,6 +8,10 @@ easy_admin:
     brand_color: '#FD0100'
     assets:
       favicon: 'images/favicon.ico'
+      css:
+        - 'build/css/app.css'
+      js:
+        - 'build/js/app.js'
 
   list:
     actions:
@@ -116,8 +120,8 @@ easy_admin:
         max_results: 30
         fields:
           - { property: 'number', label: 'Nombre' }
-          - { property: 'unitPrice', label: 'Prix unitaire', type: 'money', type_options: { currency: 'EUR' } }
-          - { property: 'amount', label: 'Montant', type: 'money', type_options: { currency: 'EUR' } }
+          - { property: 'unitPrice', label: 'Prix unitaire', css_class: 'money-display' }
+          - { property: 'amount', label: 'Montant', css_class: 'money-display' }
           - { property: 'copyType', label: 'Copie' }
           - { property: 'isAvailable', label: 'Active' }
       form:
@@ -126,6 +130,8 @@ easy_admin:
           - { property: 'unitPrice', label: 'Prix unitaire', type: 'money', type_options: { currency: 'EUR' } }
           - { property: 'copyType', label: 'Type de copie' }
           - { property: 'isAvailable', label: 'Active' }
+      search:
+        dql_filter: 'entity.isAvailable = true'
       new:
         title: 'Créer un type de recharge'
       edit:

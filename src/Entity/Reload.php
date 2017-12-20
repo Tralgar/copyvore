@@ -25,13 +25,13 @@ class Reload
   private $createdAt;
 
   /**
-   * @ORM\ManyToOne(targetEntity="App\Entity\User")
+   * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="reloads")
    * @ORM\JoinColumn(nullable=false)
    */
   private $user;
 
   /**
-   * @ORM\ManyToOne(targetEntity="App\Entity\Admin")
+   * @ORM\ManyToOne(targetEntity="App\Entity\Admin", inversedBy="reloads")
    * @ORM\JoinColumn(nullable=false)
    */
   private $admin;
@@ -41,6 +41,11 @@ class Reload
    * @ORM\JoinColumn(nullable=false)
    */
   private $reloadType;
+
+  public function __construct()
+  {
+    $this->setCreatedAt(new \DateTime());
+  }
 
   /**
    * @return mixed
