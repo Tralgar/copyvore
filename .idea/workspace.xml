@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acdfa8e6-41a9-43f4-bfd5-4b6dc59c9720" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/packages/easy_admin.yaml" afterPath="$PROJECT_DIR$/config/packages/easy_admin.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Entity/Admin.php" afterPath="$PROJECT_DIR$/src/Entity/Admin.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Entity/Order.php" afterPath="$PROJECT_DIR$/src/Entity/Order.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Entity/Reload.php" afterPath="$PROJECT_DIR$/src/Entity/Reload.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Entity/ReloadType.php" afterPath="$PROJECT_DIR$/src/Entity/ReloadType.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,8 +20,8 @@
       <file leaf-file-name="easy_admin.yaml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/packages/easy_admin.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="610">
-              <caret line="57" column="45" lean-forward="true" selection-start-line="57" selection-start-column="45" selection-end-line="57" selection-end-column="45" />
+            <state relative-caret-position="640">
+              <caret line="68" column="74" lean-forward="false" selection-start-line="68" selection-start-column="66" selection-end-line="68" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -457,12 +454,12 @@
       <workItem from="1513698947069" duration="68000" />
       <workItem from="1513772711645" duration="239000" />
       <workItem from="1513773189101" duration="19000" />
-      <workItem from="1513773535108" duration="17469000" />
+      <workItem from="1513773535108" duration="18936000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69409000" />
+    <option name="totallyTimeSpent" value="70876000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1920" height="1055" extended-state="6" />
@@ -847,8 +844,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/packages/easy_admin.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="57" column="45" lean-forward="true" selection-start-line="57" selection-start-column="45" selection-end-line="57" selection-end-column="45" />
+        <state relative-caret-position="640">
+          <caret line="68" column="74" lean-forward="false" selection-start-line="68" selection-start-column="66" selection-end-line="68" selection-end-column="74" />
           <folding />
         </state>
       </provider>

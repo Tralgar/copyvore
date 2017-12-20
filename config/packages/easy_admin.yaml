@@ -56,7 +56,18 @@ easy_admin:
         title: 'Utilisateur (#%%entity_id%%)'
       show:
         title: 'Utilisateur (#%%entity_id%%)'
-
+        fields:
+          - { property: 'id', label: 'Identifiant' }
+          - { property: 'name', label: 'Nom' }
+          - { property: 'surname', label: 'Prénom' }
+          - { property: 'email', label: 'E-mail', type: 'email' }
+          - { property: 'phone', label: 'Téléphone' }
+          - { property: 'streetNumber', label: 'Numéro de rue' }
+          - { property: 'street', label: 'Rue' }
+          - { property: 'city', label: 'Ville' }
+          - { property: 'postcode', label: 'Code postal' }
+          - { property: 'orders', label: 'Commandes', css_class: 'col-sm-6' }
+          - { property: 'reloads', label: 'Recharges', css_class: 'col-sm-6' }
     Order:
       class: App\Entity\Order
       label: 'Commandes'
