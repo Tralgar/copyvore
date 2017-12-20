@@ -264,6 +264,11 @@ class User
     $this->reloads = $reloads;
   }
 
+  public function __toString()
+  {
+    return $this->getSurname() . " " . $this->getName();
+  }
+
   /**
    * @param $copyType CopyType
    *
@@ -291,10 +296,5 @@ class User
     }
 
     return $numberCopiesFromReloads - $numberCopiesFromOrders;
-  }
-
-  public function __toString()
-  {
-    return $this->getSurname() . " " . $this->getName();
   }
 }
