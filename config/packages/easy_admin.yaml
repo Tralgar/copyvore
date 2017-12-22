@@ -66,8 +66,8 @@ easy_admin:
           - { property: 'street', label: 'Rue' }
           - { property: 'city', label: 'Ville' }
           - { property: 'postcode', label: 'Code postal' }
-          - { property: 'orders', label: 'Commandes', css_class: 'col-sm-6' }
-          - { property: 'reloads', label: 'Recharges', css_class: 'col-sm-6' }
+          - { property: 'orders', label: 'Commandes', css_class: 'col-sm-6 user-orders' }
+          - { property: 'reloads', label: 'Recharges', css_class: 'col-sm-6 user-reloads' }
     Order:
       class: App\Entity\Order
       label: 'Commandes'

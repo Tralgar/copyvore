@@ -2,3 +2,18 @@ td.money-display:after {
   display: inline;
   content: "€";
 }
+
+.user-orders, .user-reloads {
+  margin-top: 30px;
+
+  label {
+    width: 83.33333333%;
+    text-align: left !important;
+    padding-bottom: 5px;
+    float: right !important;
+  }
+
+  div {
+    float: right !important;
+  }
+}

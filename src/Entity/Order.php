@@ -173,14 +173,16 @@ class Order
 
   public function validate(ExecutionContextInterface $context)
   {
-    if ($this->getNumber() > $this->getUser()->getCopyNumberByCopyType($this->getCopyType()))
+    $copyNumber = $this->getUser()->getCopyNumberByCopyType($this->getCopyType());
+    if ($this->getNumber() > $copyNumber)
     {
-      $context->buildViolation('Cet utilisateur n\'a pas assez de recharge pour ce le type de copie choisis !')
-              ->atPath('number')
+      $copyNumber *= (-1);
+      $context->buildViolation("Cet utilisateur n\'a pas assez de recharge, il manque $copyNumber copies " . $this->getCopyType()->getType() . "!")
+              ->atPath('copyType')
               ->addViolation();
 
-      $context->buildViolation('Cet utilisateur n\'a pas assez de recharge !')
-              ->atPath('copyType')
+      $context->buildViolation('Cet utilisateur n\'a pas assez de recharge pour ce le type de copie choisis !')
+              ->atPath('number')
               ->addViolation();
     }
   }
