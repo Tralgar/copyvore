@@ -3,5 +3,11 @@
 {% block main %}
   {{ parent() }}
 
-  {#{{ render(controller('App\Controller\Controller::list'), ['user' => entity]) }}#}
+  {#{% for order in entity.orders %}#}
+  {#{{ order }}#}
+  {#{% endfor %}#}
+
+  <div>
+    {{ render(controller('App\\Controller\\User\\UserController::availableCopies', {'user': entity})) }}
+  </div>
 {% endblock main %}

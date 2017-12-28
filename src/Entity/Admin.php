@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -11,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(name="copyvore_admin")
  * @UniqueEntity("login")
  */
-class Admin
+class Admin implements UserInterface, \Serializable
 {
   /**
    * @ORM\Id
@@ -27,7 +28,7 @@ class Admin
   private $login;
 
   /**
-   * @ORM\Column(type="string", length=32)
+   * @ORM\Column(type="string", length=255)
    * @Assert\NotBlank()
    */
   private $password;
@@ -117,5 +118,34 @@ class Admin
   public function __toString()
   {
     return $this->getLogin();
+  }
+
+  public function serialize()
+  {
+    return serialize([$this->getId(), $this->getLogin(), $this->getPassword()]);
+  }
+
+  public function unserialize($serialized)
+  {
+    list ($this->id, $this->login, $this->password) = unserialize($serialized);
+  }
+
+  public function getRoles()
+  {
+    return ['ROLE_ADMIN'];
+  }
+
+  public function getSalt()
+  {
+    return null;
+  }
+
+  public function getUsername()
+  {
+    return $this->getLogin();
+  }
+
+  public function eraseCredentials()
+  {
   }
 }

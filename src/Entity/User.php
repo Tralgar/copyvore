@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -11,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(name="copyvore_user")
  * @UniqueEntity("email")
  */
-class User
+class User implements UserInterface, \Serializable
 {
   /**
    * @ORM\Id
@@ -40,7 +41,7 @@ class User
   private $email;
 
   /**
-   * @ORM\Column(type="string", length=32)
+   * @ORM\Column(type="string", length=255)
    * @Assert\NotBlank()
    */
   private $password;
@@ -296,5 +297,42 @@ class User
     }
 
     return $numberCopiesFromReloads - $numberCopiesFromOrders;
+  }
+
+  public function serialize()
+  {
+    return serialize([
+                       $this->getId(),
+                       $this->getUsername(),
+                       $this->getPassword(),
+                     ]);
+  }
+
+  public function unserialize($serialized)
+  {
+    list (
+      $this->id,
+      $this->email,
+      $this->password,
+      ) = unserialize($serialized);
+  }
+
+  public function getRoles()
+  {
+    return ['ROLE_USER'];
+  }
+
+  public function getSalt()
+  {
+    return null;
+  }
+
+  public function getUsername()
+  {
+    return $this->getEmail();
+  }
+
+  public function eraseCredentials()
+  {
   }
 }
