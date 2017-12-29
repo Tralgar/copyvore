@@ -48,6 +48,11 @@ cd copyvore
 composer install
 ```
 
+If you want to compile scss and js, we are using webpack encore and yarn :
+```
+yarn run encore dev --watch
+```
+
 ### Run It !
 
 Edit the copyvore/.env file to change ids and url for database connection.

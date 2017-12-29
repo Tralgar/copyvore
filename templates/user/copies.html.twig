@@ -1,6 +1,7 @@
-
-COPIES
-
-{% for copyType, numberAvailableCopy in availableCopies %}
-<div>{{ copyType }} : {{ numberAvailableCopy }}</div>
-{% endfor %}
+<div class="userAvailableCopies_title">Copies disponibles :</div>
+<div class="userAvailableCopies_container">
+  {% for copyType, numberAvailableCopy in availableCopies %}
+    <div class="userAvailableCopies_type">{{ copyType }}</div>
+    <div class="userAvailableCopies_number">{{ numberAvailableCopy }}</div>
+  {% endfor %}
+</div>

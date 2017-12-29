@@ -1,10 +1,8 @@
 Recherche commande sur nom par exemple
-Voir profil avec liste commandes et liste recharges
 Voir nombre de copies pour chaques type de copie dans profil user / voir aussi dans création commande (dispo par user et type choisis)
 filtre création recharge et rechargetype sur des isAvailable = true
 Affichage prix lors de saisie de recharge
 identification
-personnaliser message erreur (nb de copies manquantes pour faire la commande)
 bouton sauvegarder les modifications lors de la création...
-
+verifier limite affichage commande/reloads utilisateur
 
