@@ -1,8 +1,7 @@
-Recherche commande sur nom par exemple
-Voir nombre de copies pour chaques type de copie dans profil user / voir aussi dans création commande (dispo par user et type choisis)
+Voir nombre de copies pour chaques type de copie dans création commande
 filtre création recharge et rechargetype sur des isAvailable = true
+ajout commande/recharge dans show user
 Affichage prix lors de saisie de recharge
-identification
 bouton sauvegarder les modifications lors de la création...
-verifier limite affichage commande/reloads utilisateur
+pas de choix par défault sur les forms
 

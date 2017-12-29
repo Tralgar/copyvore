@@ -73,11 +73,13 @@ class User implements UserInterface, \Serializable
 
   /**
    * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="user")
+   * @ORM\OrderBy({"createdAt" = "DESC"})
    */
   private $orders;
 
   /**
    * @ORM\OneToMany(targetEntity="App\Entity\Reload", mappedBy="user")
+   * @ORM\OrderBy({"createdAt" = "DESC"})
    */
   private $reloads;
 

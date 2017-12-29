@@ -1,0 +1,8 @@
+{% extends '@EasyAdmin/default/show.html.twig' %}
+{% block main %}
+  {{ render(controller('App\\Controller\\User\\UserController::availableCopies', {'user': entity})) }}
+  <h4 class="user_infos">
+    Informations utilisateur :
+  </h4>
+  {{ parent() }}
+{% endblock main %}

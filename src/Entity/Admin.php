@@ -35,11 +35,13 @@ class Admin implements UserInterface, \Serializable
 
   /**
    * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="admin")
+   * @ORM\OrderBy({"createdAt" = "DESC"})
    */
   private $orders;
 
   /**
    * @ORM\OneToMany(targetEntity="App\Entity\Reload", mappedBy="admin")
+   * @ORM\OrderBy({"createdAt" = "DESC"})
    */
   private $reloads;
 

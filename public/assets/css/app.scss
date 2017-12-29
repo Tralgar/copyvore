@@ -3,17 +3,15 @@ td.money-display:after {
   content: "€";
 }
 
-.user-orders, .user-reloads {
-  margin-top: 30px;
-
-  label {
-    width: 83.33333333%;
-    text-align: left !important;
-    padding-bottom: 5px;
-    float: right !important;
+div.money-display {
+  .form-control:after {
+    content: "€";
   }
+}
 
-  div {
-    float: right !important;
+/** CUSTOM USER TEMPLATES **/
+.user {
+  &_infos {
+    margin-top: 40px;
   }
 }

@@ -19,22 +19,13 @@ easy_admin:
       - { name: 'new', icon: 'plus', label: 'Ajouter', title: 'Créer' }
       - { name: 'edit', icon: 'pencil', label: 'Editer', title: 'Editer' }
       - { name: 'delete', icon: 'times', label: 'Supprimer', title: 'Supprimer' }
+  show:
+    max_results: 3
 
   entities:
     User:
       class: App\Entity\User
       label: 'Utilisateurs'
-      list:
-        title: 'Liste des %%entity_label%%'
-        max_results: 30
-        sort: 'id'
-        actions:
-          - { name: 'show', icon: 'user', label: 'Voir', title: 'Voir' }
-        fields:
-          - { property: 'name', label: 'Nom' }
-          - { property: 'surname', label: 'Prénom' }
-          - { property: 'email', label: 'E-mail', type: 'email' }
-          - { property: 'phone', label: 'Téléphone' }
       form:
         fields:
           - { type: 'section', label: 'Informations Utilisateur', icon: 'user' }
@@ -50,6 +41,17 @@ easy_admin:
           - { property: 'street', label: 'Rue' }
           - { property: 'city', label: 'Ville' }
           - { property: 'postcode', label: 'Code postal' }
+      list:
+        title: 'Liste des %%entity_label%%'
+        max_results: 30
+        sort: 'id'
+        actions:
+          - { name: 'show', icon: 'user', label: 'Voir', title: 'Voir' }
+        fields:
+          - { property: 'name', label: 'Nom' }
+          - { property: 'surname', label: 'Prénom' }
+          - { property: 'email', label: 'E-mail', type: 'email' }
+          - { property: 'phone', label: 'Téléphone' }
       new:
         title: 'Ajouter un utilisateur'
       edit:
@@ -66,15 +68,30 @@ easy_admin:
           - { property: 'street', label: 'Rue' }
           - { property: 'city', label: 'Ville' }
           - { property: 'postcode', label: 'Code postal' }
-          - { property: 'orders', label: 'Commandes', css_class: 'col-sm-6 user-orders' }
-          - { property: 'reloads', label: 'Recharges', css_class: 'col-sm-6 user-reloads' }
+          - { property: 'orders', label: 'Commandes' }
+          - { property: 'reloads', label: 'Recharges' }
+      search:
+        sort: 'id'
+
     Order:
       class: App\Entity\Order
       label: 'Commandes'
+      form:
+        fields:
+          - { type: 'group', icon: 'user', css_class: 'col-sm-6', label: 'Informations humaines' }
+          - { property: 'user', label: 'Utilisateur', icon: 'user', type_options: { placeholder: 'Choisissez un utilisateur' } }
+          - { property: 'admin', label: 'Admin', icon: 'user', type_options: { placeholder: 'Choisissez un admin' } }
+          - { type: 'group', icon: 'print', css_class: 'col-sm-6', label: 'Informations commande' }
+          - { property: 'copyType', label: 'Type de copie', type_options: { placeholder: 'Choisissez un type de copie' } }
+          - { property: 'number', label: 'Nombre de copies' }
+          - { property: 'label', label: 'Libellé' }
+#          - { property: 'createdAt', label: 'Date de création' }
       list:
         title: 'Liste des %%entity_label%%'
         max_results: 30
         sort: 'createdAt'
+        actions:
+          - { name: 'show', icon: 'credit-card', label: 'Voir', title: 'Voir' }
         fields:
           - { property: 'user', label: 'Utilisateur' }
           - { property: 'admin', label: 'Admin' }
@@ -82,69 +99,96 @@ easy_admin:
           - { property: 'createdAt', label: 'Date de commande' }
           - { property: 'number', label: 'Nombre de copies' }
           - { property: 'label', label: 'Libellé' }
-      form:
+      show:
+        title: 'Commande (#%%entity_id%%)'
         fields:
-          - { type: 'group', icon: 'user', css_class: 'col-sm-6', label: 'Informations humaines' }
-          - { property: 'user', label: 'Utilisateur', icon: 'user' }
-          - { property: 'admin', label: 'Admin', icon: 'user' }
-          - { type: 'group', icon: 'print', css_class: 'col-sm-6', label: 'Informations commande' }
+          - { property: 'id', label: 'Identifiant' }
+          - { property: 'user', label: 'Utilisateur' }
+          - { property: 'admin', label: 'Admin' }
           - { property: 'copyType', label: 'Type de copie' }
           - { property: 'number', label: 'Nombre de copies' }
           - { property: 'label', label: 'Libellé' }
-#          - { property: 'createdAt', label: 'Date de création' }
       new:
         title: 'Créer une commande'
       edit:
         title: 'Commande (#%%entity_id%%)'
+      search:
+        sort: 'createdAt'
 
     Reload:
       class: App\Entity\Reload
       label: 'Recharges'
+      form:
+        fields:
+          - { property: 'user', label: 'Utilisateur', icon: 'user', type_options: { placeholder: 'Choisissez un utilisateur' } }
+          - { property: 'admin', label: 'Admin', icon: 'user', type_options: { placeholder: 'Choisissez un admin' } }
+          - { type: 'divider' }
+          - { property: 'reloadType', label: 'Type de recharge', type_options: { placeholder: 'Choisissez un type de recharge' } }
+#          - { property: 'createdAt', label: 'Date de création' }
       list:
         title: 'Liste des %%entity_label%%'
         max_results: 30
         sort: 'createdAt'
+        actions:
+          - { name: 'show', icon: 'tasks', label: 'Voir', title: 'Voir' }
         fields:
           - { property: 'user', label: 'Utilisateur' }
           - { property: 'admin', label: 'Admin' }
           - { property: 'reloadType', label: 'Type de recharge' }
           - { property: 'amount', label: 'Montant', css_class: 'money-display' }
           - { property: 'createdAt', label: 'Date de création' }
-      form:
+      show:
+        title: 'Recharge (#%%entity_id%%)'
         fields:
-          - { property: 'user', label: 'Utilisateur', icon: 'user' }
-          - { property: 'admin', label: 'Admin', icon: 'user' }
-          - { type: 'divider' }
+          - { property: 'id', label: 'Identifiant' }
+          - { property: 'user', label: 'Utilisateur' }
+          - { property: 'admin', label: 'Admin' }
           - { property: 'reloadType', label: 'Type de recharge' }
-#          - { property: 'createdAt', label: 'Date de création' }
+          - { property: 'amount', label: 'Montant', css_class: 'money-display' }
+          - { property: 'createdAt', label: 'Date de création' }
       new:
         title: 'Créer une recharge'
       edit:
         title: 'Recharge (#%%entity_id%%)'
+      search:
+        sort: 'createdAt'
 
     ReloadType:
       class: App\Entity\ReloadType
       label: 'Types de recharge'
+      form:
+        fields:
+          - { property: 'number', label: 'Nombre de copies' }
+          - { property: 'unitPrice', label: 'Prix unitaire', type: 'money', type_options: { currency: 'EUR' } }
+          - { property: 'copyType', label: 'Type de copie', type_options: { placeholder: 'Choisissez un type de copie' } }
+          - { property: 'isAvailable', label: 'Active' }
       list:
         title: 'Liste des %%entity_label%%'
         max_results: 30
         sort: 'id'
+        actions:
+          - { name: 'show', icon: 'database', label: 'Voir', title: 'Voir' }
         fields:
           - { property: 'number', label: 'Nombre' }
           - { property: 'unitPrice', label: 'Prix unitaire', css_class: 'money-display' }
           - { property: 'amount', label: 'Montant', css_class: 'money-display' }
           - { property: 'copyType', label: 'Copie' }
           - { property: 'isAvailable', label: 'Active' }
-      form:
+      show:
+        title: 'Type de recharge (#%%entity_id%%)'
         fields:
-          - { property: 'number', label: 'Nombre de copies' }
-          - { property: 'unitPrice', label: 'Prix unitaire', type: 'money', type_options: { currency: 'EUR' } }
-          - { property: 'copyType', label: 'Type de copie' }
+          - { property: 'id', label: 'Identifiant' }
+          - { property: 'number', label: 'Nombre' }
+          - { property: 'unitPrice', label: 'Prix unitaire', css_class: 'money-display' }
+          - { property: 'amount', label: 'Montant', css_class: 'money-display' }
+          - { property: 'copyType', label: 'Copie' }
           - { property: 'isAvailable', label: 'Active' }
       new:
         title: 'Créer un type de recharge'
       edit:
         title: 'Type de recharge (#%%entity_id%%)'
+      search:
+        sort: 'id'
 
     CopyType:
       class: App\Entity\CopyType
@@ -153,27 +197,47 @@ easy_admin:
         title: 'Liste des %%entity_label%%'
         max_results: 30
         sort: 'id'
+        actions:
+          - { name: 'show', icon: 'file', label: 'Voir', title: 'Voir' }
         fields:
+          - { property: 'type', label: 'Type' }
+      show:
+        title: 'Type de copie (#%%entity_id%%)'
+        fields:
+          - { property: 'id', label: 'Identifiant' }
           - { property: 'type', label: 'Type' }
       new:
         title: 'Créer un type de copie'
       edit:
         title: 'Type de copie (#%%entity_id%%)'
+      search:
+        sort: 'id'
 
     Admin:
       class: App\Entity\Admin
       label: 'Admins'
-      list:
-        title: 'Liste des %%entity_label%%'
-        max_results: 30
-        sort: 'id'
-        fields:
-          - { property: 'login', label: 'Login' }
       form:
         fields:
           - { property: 'login', label: 'Login', icon: 'user' }
           - { property: 'password', label: 'Mot de passe', type: 'password' }
+      list:
+        title: 'Liste des %%entity_label%%'
+        max_results: 30
+        sort: 'id'
+        actions:
+          - { name: 'show', icon: 'user-md', label: 'Voir', title: 'Voir' }
+        fields:
+          - { property: 'login', label: 'Login' }
+      show:
+        title: 'Admin (#%%entity_id%%)'
+        fields:
+          - { property: 'id', label: 'Identifiant' }
+          - { property: 'login', label: 'Login' }
+          - { property: 'orders', label: 'Commandes' }
+          - { property: 'reloads', label: 'Recharges' }
       new:
         title: 'Ajouter un admin'
       edit:
         title: 'Admin (#%%entity_id%%)'
+      search:
+        sort: 'id'
