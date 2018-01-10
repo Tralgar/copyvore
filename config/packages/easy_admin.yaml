@@ -123,7 +123,7 @@ easy_admin:
           - { property: 'user', label: 'Utilisateur', icon: 'user', type_options: { placeholder: 'Choisissez un utilisateur' } }
           - { property: 'admin', label: 'Admin', icon: 'user', type_options: { placeholder: 'Choisissez un admin' } }
           - { type: 'divider' }
-          - { property: 'reloadType', label: 'Type de recharge', type_options: { placeholder: 'Choisissez un type de recharge' } }
+          - { property: 'reloadType', label: 'Type de recharge', type_options: { placeholder: 'Choisissez un type de recharge', query_builder: App\Repository\ReloadTypeRepository::findActivated } }
 #          - { property: 'createdAt', label: 'Date de création' }
       list:
         title: 'Liste des %%entity_label%%'

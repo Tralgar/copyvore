@@ -6,7 +6,5 @@ use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdmin
 
 class AdminController extends BaseAdminBundle
 {
-  protected function createNewOrderEntity()
-  {
-  }
+
 }
