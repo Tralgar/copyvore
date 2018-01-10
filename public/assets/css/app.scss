@@ -15,3 +15,16 @@ div.money-display {
     margin-top: 40px;
   }
 }
+
+/** LOGIN TEMPLATES **/
+.error-login {
+  color: #ff3e0e;
+  font-family: FontAwesome;
+  font-size: 16px;
+}
+
+.error-login-image::before {
+  display: inline-block;
+  content: "\f071";
+  padding-right: 10px;
+}

@@ -1,7 +1,3 @@
 Voir nombre de copies pour chaques type de copie dans création commande
-filtre création recharge et rechargetype sur des isAvailable = true
-ajout commande/recharge dans show user
-Affichage prix lors de saisie de recharge
-bouton sauvegarder les modifications lors de la création...
-pas de choix par défault sur les forms
-
+Ajout commande/recharge dans show user
+List form DESC

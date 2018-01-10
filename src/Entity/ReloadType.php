@@ -133,6 +133,6 @@ class ReloadType
 
   public function __toString()
   {
-    return $this->getCopyType() . " (" . $this->getNumber() . "x" . $this->getUnitPrice() . "€)";
+    return $this->getNumber() . " copies " . $this->getCopyType() . " (" . $this->getAmount(). "€)";
   }
 }

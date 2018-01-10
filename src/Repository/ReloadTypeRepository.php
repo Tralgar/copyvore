@@ -20,6 +20,6 @@ class ReloadTypeRepository extends ServiceEntityRepository
               ->select('r')
               ->from('App\Entity\ReloadType', 'r')
               ->where('r.isAvailable = 1')
-              ->orderBy('r.id', 'ASC');
+              ->orderBy('r.id', 'DESC');
   }
 }

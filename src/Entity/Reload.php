@@ -119,13 +119,13 @@ class Reload
     $this->reloadType = $reloadType;
   }
 
+  public function getAmount()
+  {
+    return $this->getReloadType()->getAmount();
+  }
+
   public function __toString()
   {
     return $this->getUser() . " " . $this->getReloadType() . " Par " . $this->getAdmin();
-  }
-
-  public function getAmount()
-  {
-    return $this->getReloadType()->getNumber() * $this->getReloadType()->getUnitPrice();
   }
 }

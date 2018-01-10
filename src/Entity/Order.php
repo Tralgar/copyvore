@@ -176,12 +176,13 @@ class Order
     $copyNumber = $this->getUser()->getCopyNumberByCopyType($this->getCopyType());
     if ($this->getNumber() > $copyNumber)
     {
-      $copyNumber *= (-1);
-      $context->buildViolation("Cet utilisateur n\'a pas assez de recharge, il manque $copyNumber copies " . $this->getCopyType()->getType() . "!")
+      $copyNumberNeeded = $this->getNumber() - $copyNumber;
+
+      $context->buildViolation("Ce client n'a pas assez de recharge, il ne dispose que de $copyNumber copies " . $this->getCopyType()->getType() . "!")
               ->atPath('copyType')
               ->addViolation();
 
-      $context->buildViolation('Cet utilisateur n\'a pas assez de recharge pour ce le type de copie choisis !')
+      $context->buildViolation("Ce client a besoin de $copyNumberNeeded copies " . $this->getCopyType()->getType() . " supplémentaires pour cette commande !")
               ->atPath('number')
               ->addViolation();
     }
