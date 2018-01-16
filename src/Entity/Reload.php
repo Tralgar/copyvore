@@ -126,6 +126,6 @@ class Reload
 
   public function __toString()
   {
-    return $this->getUser() . " " . $this->getReloadType() . " Par " . $this->getAdmin();
+    return $this->getUser() . " - " . $this->getReloadType();
   }
 }

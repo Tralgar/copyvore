@@ -168,7 +168,7 @@ class Order
 
   public function __toString()
   {
-    return $this->getUser() . " " . $this->getNumber() . "x" . $this->getCopyType() . " Par " . $this->getAdmin();
+    return $this->getUser() . " - " . $this->getNumber() . " copies " . $this->getCopyType();
   }
 
   public function validate(ExecutionContextInterface $context)
