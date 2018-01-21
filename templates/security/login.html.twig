@@ -23,7 +23,7 @@
           {% endif %}
           <div class="wrap-input100 validate-input" data-validate="Champs obligatoire">
             <input class="input100" type="text" id="username" name="_username" value="{{ last_username }}">
-            <span class="focus-input100" data-placeholder="Login"></span>
+            <span class="focus-input100" data-placeholder="E-mail"></span>
           </div>
           <div class="wrap-input100 validate-input" data-validate="Champs obligatoire">
 						<span class="btn-show-pass">
@@ -32,12 +32,16 @@
             <input class="input100" type="password" id="password" name="_password">
             <span class="focus-input100" data-placeholder="Mot de passe"></span>
           </div>
+          <div>
+            <input type="checkbox" id="remember_me" name="_remember_me" checked />
+            <span for="remember_me">Rester connecté</span>
+          </div>
           <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
           <div class="container-login100-form-btn">
             <div class="wrap-login100-form-btn">
               <div class="login100-form-bgbtn"></div>
               <button class="login100-form-btn">
-                Login
+                Connexion
               </button>
             </div>
           </div>
