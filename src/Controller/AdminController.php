@@ -2,17 +2,34 @@
 
 namespace App\Controller;
 
-use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminBundle;
+use App\Entity\Admin;
+use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class AdminController extends BaseAdminBundle
+class AdminController extends BaseAdminController
 {
-  protected function updateEntity($entity)
-  {
-    // UserPasswordEncoderInterface $encoder
-    // $user = $this->getUser();
-    // $encoded = $encoder->encodePassword($user, $plainPassword);
+  private $encoder;
 
-    // $user->setPassword($encoded);
+  public function __construct(UserPasswordEncoderInterface $encoder)
+  {
+    $this->encoder = $encoder;
+  }
+
+  protected function persistUserEntity(User $user)
+  {
+    $encodedPassword = $this->encoder->encodePassword($user, $user->getPassword());
+    $user->setPassword($encodedPassword);
+
+    parent::persistEntity($user);
+  }
+
+  protected function persistAdminEntity(Admin $admin)
+  {
+    $encodedPassword = $this->encoder->encodePassword($admin, $admin->getPassword());
+    $admin->setPassword($encodedPassword);
+
+    parent::persistEntity($admin);
   }
 
 }
