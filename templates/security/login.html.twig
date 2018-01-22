@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-  <link rel="stylesheet" type="text/css" href="/login/fonts/iconic/css/material-design-iconic-font.min.css">
-  <link rel="stylesheet" type="text/css" href="/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/login/css/util.css">
   <link rel="stylesheet" type="text/css" href="/login/css/main.css">
   <link rel="stylesheet" type="text/css" href="/build/css/app.css">
@@ -27,12 +26,12 @@
           </div>
           <div class="wrap-input100 validate-input" data-validate="Champs obligatoire">
 						<span class="btn-show-pass">
-							<i class="zmdi zmdi-eye"></i>
+							<i class="fa fa-eye"></i>
 						</span>
             <input class="input100" type="password" id="password" name="_password">
             <span class="focus-input100" data-placeholder="Mot de passe"></span>
           </div>
-          <div>
+          <div class="remember-me">
             <input type="checkbox" id="remember_me" name="_remember_me" checked />
             <span for="remember_me">Rester connecté</span>
           </div>
