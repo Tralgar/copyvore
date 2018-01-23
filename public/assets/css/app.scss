@@ -13,14 +13,14 @@ div.money-display {
   }
 }
 
-/** CUSTOM USER TEMPLATES **/
+/** CUSTOM USER **/
 .user {
   &_infos {
     margin-top: 40px;
   }
 }
 
-/** LOGIN TEMPLATES **/
+/** LOGIN **/
 .error-login {
   color: #FF3E0E;
   font-family: Poppins-Bold;
@@ -84,5 +84,43 @@ div.money-display {
 
   ul {
     padding: 0;
+  }
+}
+
+/** ACCOUNT **/
+#account {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 40px;
+  background: #F2F2F2;
+
+  &-address {
+    float: left;
+
+    & tr {
+      & td {
+        padding-top: 5px;
+        vertical-align: top;
+        min-width: 30px;
+      }
+    }
+  }
+
+  &-logo {
+    float: right;
+  }
+
+  &-copies {
+    clear: both;
+    padding-top: 20px;
+  }
+
+  &-orders {
+    padding-top: 20px;
+  }
+
+  &-reloads {
+    padding-top: 20px;
   }
 }

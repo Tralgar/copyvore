@@ -4,6 +4,6 @@ if (document.getElementById('login')) {
     usernameInput.focus();
     setTimeout(function () {
       document.getElementById('password').focus();
-    }, 10); // hack for double focus triggered
+    }, 20); // hack for double focus triggered
   }
 }

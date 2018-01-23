@@ -1,16 +1,6 @@
 logout:
     path: /logout/
 
-#index:
-#    path: /
-#    defaults: { _controller: 'App\Controller\DefaultController::index' }
-
-#user_show:
-#  path: /user/show/{id}
-#  controller: App\Controller\UserController::show
-#  requirements:
-#    id: '\d+'
-
 #homepage:
 #  path: /
 #  controller: App\Controller\MainController::index

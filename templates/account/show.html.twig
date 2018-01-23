@@ -1,4 +1,77 @@
 {% extends 'base.html.twig' %}
+
+{% block title %}
+  Copyvore - Mon compte
+{% endblock %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/build/css/app.css">
+{% endblock %}
+
 {% block body %}
-{{ user.getName() }}
+  <div id="account">
+    <div id="account-address">
+      <h3>Informations : </h3>
+      <table>
+        <tr>
+          <td><span class="fa fa-user"></span></td>
+          <td>{{ user.name }} {{ user.surname }}</td>
+        </tr>
+        <tr>
+          <td><span class="fa fa-envelope"></span></td>
+          <td>{{ user.email }}</td>
+        </tr>
+        {% if user.phone is not null %}
+          <tr>
+            <td><span class="fa fa-phone"></span></td>
+            <td>{{ user.phone }}</td>
+          </tr>
+        {% endif %}
+        <tr>
+          {% if user.city is not null and user.street is not null and user.postcode is not null %}
+            <td><span class="fa fa-home"></span></td>
+          {% endif %}
+          <td>
+            {% if user.streetNumber is not null and user.street is not null %}
+              {{ user.streetNumber }}
+            {% endif %}
+            {% if user.street is not null %}
+              {{ user.street }}
+              <br>
+            {% endif %}
+            {% if user.city is not null %}
+              {{ user.city }}
+              <br>
+            {% endif %}
+            {% if user.postcode is not null %}
+              {{ user.postcode }}
+              <br>
+            {% endif %}
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="account-logo">
+      <img width="200" height="200" class="commingsoon-image" src="/images/copyvore.png" title="Copyvore" />
+    </div>
+    <div id="account-copies">
+      <h3>Soldes : </h3>
+      {% for copyType, numberAvailableCopy in availableCopies %}
+        <div>{{ copyType }} : {{ numberAvailableCopy }}</div>
+      {% endfor %}
+    </div>
+    <div id="account-orders">
+      <h3>Commandes : </h3>
+      {% for order in user.orders %}
+        <li>{{ order }}</li>
+      {% endfor %}
+    </div>
+    <div id="account-reloads">
+      <h3>Recharges : </h3>
+      {% for reload in user.reloads %}
+        <li>{{ reload }}</li>
+      {% endfor %}
+    </div>
+  </div>
 {% endblock %}

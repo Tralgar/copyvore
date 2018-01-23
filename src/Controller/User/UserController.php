@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 class UserController extends Controller
 {
   /**
-   * @Route("/account", name="account")
+   * @Route("/account/", name="account")
    */
   public function account(AuthorizationCheckerInterface $authChecker)
   {
@@ -23,11 +23,15 @@ class UserController extends Controller
 
     $user = $this->getUser();
 
-    return $this->render('account/show.html.twig', ['user' => $user]);
+    return $this->render('account/show.html.twig', ['user' => $user, 'availableCopies' => $this->getAvailableCopies($user)]);
   }
 
-
   public function availableCopies(User $user)
+  {
+    return $this->render('user/copies.html.twig', ['availableCopies' => $this->getAvailableCopies($user)]);
+  }
+
+  private function getAvailableCopies(User $user)
   {
     $availableCopies = [];
     $copyTypes = $product = $this->getDoctrine()
@@ -39,7 +43,7 @@ class UserController extends Controller
       $availableCopies[(string) $copyType] = $user->getCopyNumberByCopyType($copyType);
     }
 
-    return $this->render('user/copies.html.twig', ['availableCopies' => $availableCopies]);
+    return $availableCopies;
   }
 
 }
